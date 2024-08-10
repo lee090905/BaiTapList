@@ -121,91 +121,91 @@ class LibraryManagement {
 
         while (true) {
             System.out.println("Library Management System:");
-            System.out.println("1. Add Book");
-            System.out.println("2. Search Book by ISBN");
-            System.out.println("3. Update Book by ISBN");
-            System.out.println("4. Remove Book by ISBN");
-            System.out.println("5. List Books by Author");
-            System.out.println("6. Sort Books by Year Published");
-            System.out.println("7. List All Books");
-            System.out.println("8. Exit");
-            System.out.print("Choose an option: ");
+            System.out.println("1. thêm sách");
+            System.out.println("2. tìm sách theo ISBN");
+            System.out.println("3. xửa sách theo ISBN");
+            System.out.println("4. xóa sách theo ISBN");
+            System.out.println("5. danh sách theo Author");
+            System.out.println("6. sắp sếp sách the Year Published");
+            System.out.println("7. toàn bộ sách");
+            System.out.println("8. thoát");
+            System.out.print("chọn chức năng: ");
 
             int option = scanner.nextInt();
             scanner.nextLine(); // Consume newline
 
             switch (option) {
                 case 1:
-                    System.out.print("Enter ISBN: ");
+                    System.out.print("nhập ISBN: ");
                     String isbn = scanner.nextLine();
-                    System.out.print("Enter Title: ");
+                    System.out.print("nhập Title: ");
                     String title = scanner.nextLine();
-                    System.out.print("Enter Author: ");
+                    System.out.print("nhập Author: ");
                     String author = scanner.nextLine();
-                    System.out.print("Enter Year Published: ");
+                    System.out.print("nhập Year Published: ");
                     int yearPublished = scanner.nextInt();
                     library.addBook(new Book(isbn, title, author, yearPublished));
                     break;
                 case 2:
-                    System.out.print("Enter ISBN: ");
+                    System.out.print("nhập ISBN: ");
                     isbn = scanner.nextLine();
                     Book foundBook = library.searchBookByIsbn(isbn);
                     if (foundBook != null) {
-                        System.out.println("Book Found: " + foundBook);
+                        System.out.println("sách: " + foundBook);
                     } else {
-                        System.out.println("Book not found.");
+                        System.out.println("không tìm thấy sách.");
                     }
                     break;
                 case 3:
-                    System.out.print("Enter ISBN of the book to update: ");
+                    System.out.print("nhập ISBN của sách cần sửa: ");
                     isbn = scanner.nextLine();
-                    System.out.print("Enter new Title: ");
+                    System.out.print("nhập mới Title: ");
                     title = scanner.nextLine();
-                    System.out.print("Enter new Author: ");
+                    System.out.print("nhập mới Author: ");
                     author = scanner.nextLine();
-                    System.out.print("Enter new Year Published: ");
+                    System.out.print("nhập mới Year Published: ");
                     yearPublished = scanner.nextInt();
                     if (library.updateBookByIsbn(isbn, title, author, yearPublished)) {
-                        System.out.println("Book updated successfully.");
+                        System.out.println("đã sửa sách.");
                     } else {
-                        System.out.println("Book not found.");
+                        System.out.println("không tìm thấy sách.");
                     }
                     break;
                 case 4:
-                    System.out.print("Enter ISBN of the book to remove: ");
+                    System.out.print("nhập ISBN của sách cần xóa: ");
                     isbn = scanner.nextLine();
                     if (library.removeBookByIsbn(isbn)) {
-                        System.out.println("Book removed successfully.");
+                        System.out.println("đã xóa sách.");
                     } else {
-                        System.out.println("Book not found.");
+                        System.out.println("không tìm thấy.");
                     }
                     break;
                 case 5:
-                    System.out.print("Enter Author's name: ");
+                    System.out.print("nhập tên Author: ");
                     author = scanner.nextLine();
                     List<Book> booksByAuthor = library.listBooksByAuthor(author);
                     if (!booksByAuthor.isEmpty()) {
-                        System.out.println("Books by " + author + ":");
+                        System.out.println("sách của " + author + ":");
                         for (Book book : booksByAuthor) {
                             System.out.println(book);
                         }
                     } else {
-                        System.out.println("No books found by this author.");
+                        System.out.println("không có sách của author này.");
                     }
                     break;
                 case 6:
                     library.sortBooksByYearPublished();
-                    System.out.println("Books sorted by year published.");
+                    System.out.println("sắp xếp theo year published.");
                     break;
                 case 7:
                     library.listAllBooks();
                     break;
                 case 8:
-                    System.out.println("Exiting...");
+                    System.out.println("đang thoát...");
                     scanner.close();
                     return;
                 default:
-                    System.out.println("Invalid option. Please try again.");
+                    System.out.println("không có chức năng này. hãy thử lại.");
             }
         }
     }
