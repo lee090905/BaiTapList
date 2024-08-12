@@ -1,9 +1,6 @@
 package day10.BaiTapList;
-import java.util.HashSet;
-import java.util.Set;
-import java.util.List;
-import java.util.ArrayList;
-import java.util.Comparator;
+
+import java.util.*;
 
 public class Song {
     private int id;
@@ -103,6 +100,18 @@ class SongCollection {
             System.out.println(song);
         }
     }
+
+    public void searchByUserInput() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Nhập tiêu đề bài hát bạn muốn tìm: ");
+        String title = scanner.nextLine();
+        Song foundSong = searchByTitle(title);
+        if (foundSong != null) {
+            System.out.println("Đã tìm thấy bài hát: " + foundSong);
+        } else {
+            System.out.println("Không tìm thấy bài hát với tiêu đề: " + title);
+        }
+    }
 }
 
 class Main {
@@ -110,18 +119,17 @@ class Main {
         SongCollection collection = new SongCollection();
 
         // Thêm bài hát vào bộ sưu tập
-        collection.addSong(new Song(1, "Song One", "Artist A", 3.5));
-        collection.addSong(new Song(2, "Song Two", "Artist B", 4.0));
-        collection.addSong(new Song(3, "Song Three", "Artist A", 2.8));
+        collection.addSong(new Song(1, "Song 1", "Artist A", 3.5));
+        collection.addSong(new Song(2, "Song 2", "Artist B", 4.0));
+        collection.addSong(new Song(3, "Song 3", "Artist A", 2.8));
 
         // Hiển thị tất cả bài hát
-        System.out.println("All songs:");
+        System.out.println("tất cả bài hát:");
         collection.displayAllSongs();
 
         // Tìm kiếm bài hát theo title
-        System.out.println("\nSearch by title 'Song Two':");
-        Song foundSong = collection.searchByTitle("Song Two");
-        System.out.println(foundSong != null ? foundSong : "Song not found");
+        System.out.println("\nSearch by title:");
+        collection.searchByUserInput();
 
         // Hiển thị tất cả bài hát của một nghệ sĩ
         System.out.println("\nSongs by Artist A:");
